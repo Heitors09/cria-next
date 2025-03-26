@@ -2,7 +2,6 @@ import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern"
 import { CodeComparison } from "@/components/magicui/code-comparison";
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
-import Link from "next/link";
 
 export default function Home() {
   return (

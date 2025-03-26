@@ -93,7 +93,7 @@ newClient.analyzeRequirements()
 
         const highlightedCode = await codeToHtml(code, {
           lang: "javascript",
-          theme: selectedTheme,
+          theme: "one-dark-pro",
           transformers: [
             transformerNotationHighlight({ matchAlgorithm: "v3" }),
             transformerNotationDiff({ matchAlgorithm: "v3" }),
@@ -114,7 +114,7 @@ newClient.analyzeRequirements()
       return (
         <div
           className={cn(
-            "h-full w-full overflow-auto bg-background font-mono text-xs",
+            "h-full w-full overflow-auto bg-[#282c34] font-mono text-xs",
             "[&>pre]:h-full [&>pre]:!w-screen [&>pre]:py-2",
             "[&>pre>code]:!inline-block [&>pre>code]:!w-full",
             "[&>pre>code>span]:!inline-block [&>pre>code>span]:w-full [&>pre>code>span]:px-4 [&>pre>code>span]:py-0.5",
@@ -128,7 +128,7 @@ newClient.analyzeRequirements()
       );
     } else {
       return (
-        <pre className="h-full overflow-auto break-all bg-background p-4 font-mono text-xs text-foreground">
+        <pre className="h-full overflow-auto break-all bg-[#282c34] p-4 font-mono text-xs text-foreground">
           {code}
         </pre>
       );
@@ -147,7 +147,7 @@ newClient.analyzeRequirements()
               "[&>div>pre>code>:not(.focused)]:transition-all [&>div>pre>code>:not(.focused)]:duration-300",
             )}
           >
-            <div className="flex items-center border-b border-primary/20 bg-accent p-2 text-sm text-foreground">
+            <div className="flex items-center border-b border-primary/20 bg-[#21252b] p-2 text-sm text-foreground">
               <FileIcon className="mr-2 h-4 w-4" />
               project.js
             </div>

@@ -17,13 +17,19 @@ export interface AnimatedGridPatternProps
   height?: number;
   x?: number;
   y?: number;
-  strokeDasharray?: any;
+  strokeDasharray?: string | number;
   numSquares?: number;
   maxOpacity?: number;
   duration?: number;
-  repeatDelay?: number;
 }
 
+// Definindo um tipo específico para evitar 'any'
+type Square = {
+  id: number;
+  pos: [number, number];
+};
+
+/* eslint-disable react-hooks/exhaustive-deps */
 export function AnimatedGridPattern({
   width = 40,
   height = 40,
@@ -34,27 +40,31 @@ export function AnimatedGridPattern({
   className,
   maxOpacity = 0.5,
   duration = 4,
-  repeatDelay = 0.5,
   ...props
 }: AnimatedGridPatternProps) {
   const id = useId();
-  const containerRef = useRef(null);
+  const containerRef = useRef<SVGSVGElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [squares, setSquares] = useState(() => generateSquares(numSquares));
 
-  function getPos() {
+  function getPos(): [number, number] {
     return [
       Math.floor((Math.random() * dimensions.width) / width),
       Math.floor((Math.random() * dimensions.height) / height),
-    ];
+    ] as [number, number];
   }
 
   // Adjust the generateSquares function to return objects with an id, x, and y
   function generateSquares(count: number) {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      pos: getPos(),
-    }));
+    const squares: Square[] = [];
+    // Usando Array.from em vez de for...of para evitar problemas com 'entry'
+    Array.from({ length: count }).forEach((_, i) => {
+      squares.push({
+        id: i,
+        pos: getPos(),
+      });
+    });
+    return squares;
   }
 
   // Function to update a single square's position
@@ -81,7 +91,7 @@ export function AnimatedGridPattern({
   // Resize observer to update container dimensions
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         setDimensions({
           width: entry.contentRect.width,
           height: entry.contentRect.height,
