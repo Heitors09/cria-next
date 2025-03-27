@@ -23,7 +23,6 @@ export interface AnimatedGridPatternProps
   duration?: number;
 }
 
-// Definindo um tipo específico para evitar 'any'
 type Square = {
   id: number;
   pos: [number, number];
@@ -54,10 +53,8 @@ export function AnimatedGridPattern({
     ] as [number, number];
   }
 
-  // Adjust the generateSquares function to return objects with an id, x, and y
   function generateSquares(count: number) {
     const squares: Square[] = [];
-    // Usando Array.from em vez de for...of para evitar problemas com 'entry'
     Array.from({ length: count }).forEach((_, i) => {
       squares.push({
         id: i,
@@ -67,7 +64,6 @@ export function AnimatedGridPattern({
     return squares;
   }
 
-  // Function to update a single square's position
   const updateSquarePosition = (id: number) => {
     setSquares((currentSquares) =>
       currentSquares.map((sq) =>
@@ -81,14 +77,12 @@ export function AnimatedGridPattern({
     );
   };
 
-  // Update squares to animate in
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares));
     }
   }, [dimensions, numSquares]);
 
-  // Resize observer to update container dimensions
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
@@ -115,9 +109,13 @@ export function AnimatedGridPattern({
       ref={containerRef}
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
+        "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30 mask-gradient",
         className,
       )}
+      style={{
+        maskImage: 'linear-gradient(to bottom, black, transparent)',
+        WebkitMaskImage: 'linear-gradient(to bottom, black, transparent)'
+      }}
       {...props}
     >
       <defs>

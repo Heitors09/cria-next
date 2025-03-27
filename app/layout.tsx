@@ -25,7 +25,7 @@ export default function RootLayout({
         className={`${inter.variable} antialiased dark`}
       >
         <Navbar />
-        <div className="px-56">
+        <div className=" ">
           {children}
         </div>
       </body>
