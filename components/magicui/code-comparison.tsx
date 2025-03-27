@@ -114,7 +114,7 @@ newClient.analyzeRequirements()
       return (
         <div
           className={cn(
-            "h-full w-full overflow-auto bg-[#282c34] font-mono text-xs",
+            "h-full max-lg:h-[200px]  w-full overflow-auto bg-[#282c34] font-mono text-xs",
             "[&>pre]:h-full [&>pre]:!w-screen [&>pre]:py-2",
             "[&>pre>code]:!inline-block [&>pre>code]:!w-full",
             "[&>pre>code>span]:!inline-block [&>pre>code>span]:w-full [&>pre>code>span]:px-4 [&>pre>code>span]:py-0.5",
