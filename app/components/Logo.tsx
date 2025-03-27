@@ -1,4 +1,4 @@
-import { Earth, EarthIcon, PlaneTakeoff } from "lucide-react";
+import { Earth } from "lucide-react";
 
 export default function Logo() {
     return (

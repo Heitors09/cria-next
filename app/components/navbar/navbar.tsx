@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Logo from "../Logo";
-import { MenuIcon, Navigation, TextSelect} from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 
 const menuItems = [
