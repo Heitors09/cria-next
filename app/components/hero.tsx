@@ -7,7 +7,7 @@ import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern"
 
 export function Hero() {
   return (
-    <div className="flex max-xl:flex-col h-[646px] 2xl:px-56 xl:px-20 max-xl:py-10 max-xl:items-center">
+    <div className="flex max-xl:flex-col  h-[646px] 2xl:px-72 xl:px-20 xl:pt-24 max-xl:py-10 max-xl:items-center">
 
     <AnimatedGridPattern className="-z-10 opacity-30"/>
   <main className="xl:w-1/2 flex flex-col space-y-6 justify-center">
